@@ -9,8 +9,8 @@ docker container rm $C_NAME
 echo "Run again Container: $C_NAME"
 docker container run --name $C_NAME \
     -p 80:80 \
-    -v ~/web/teknolist/:/work  \
-    -d okulistik-php:7.4
+    -v ~/work:/work  \
+    -d okulistik/php74
 echo "Your Alias List:"
 docker exec -it $C_NAME ls -l /work/conf/
 echo "Please run inside your project that 'vendor/bin/init update:http', and re-run this script."

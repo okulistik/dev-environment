@@ -9,11 +9,12 @@ Docker images to be used for Okulistik php projects.
 * cd php74
 * ./build.sh
 * ./run.sh
+
 ### Step by step
 * cd php74
 * mkdir -p ~/work/conf
 * touch ~/work/conf/blank-alias.conf
-* docker build -t okulistik-php:7.4 .
+* docker build -t okulistik/php74 .
 * Docker Run Firstly
     ```
     docker run \
@@ -21,7 +22,7 @@ Docker images to be used for Okulistik php projects.
       -p 80:80 \ 
       -p 443:443 \
       -v ~/work:/work \
-      -d okulistik-php:7.4
+      -d okulistik/php74
     ```
 * Docker run again later    
     ```
@@ -32,7 +33,7 @@ Docker images to be used for Okulistik php projects.
       -p 80:80 \ 
       -p 443:443 \
       -v ~/work:/work \
-      -d okulistik-php:7.4
+      -d okulistik/php74
     ````
 
 ### Things to do in the sub-project directory to study

@@ -16,10 +16,10 @@ RUN docker-php-ext-install \
     pdo_mysql \
     zip
 
-COPY conf/php.ini /usr/local/etc/php/conf.d
-COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY conf/001-okulistik.conf /etc/apache2/sites-available/001-okulistik.conf
-COPY conf/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ./conf/php.ini /usr/local/etc/php/conf.d
+COPY ./conf/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./conf/001-okulistik.conf /etc/apache2/sites-available/001-okulistik.conf
+COPY ./conf/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 # install composer
 WORKDIR /root
