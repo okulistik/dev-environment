@@ -17,23 +17,13 @@ Docker images to be used for Okulistik php projects.
 * docker build -t okulistik/php74 .
 * Docker Run Firstly
     ```
-    docker run \
-      --name okul-php74 \
-      -p 80:80 \ 
-      -p 443:443 \
-      -v ~/work:/work \
-      -d okulistik/php74
+    docker run --name okul-php74 -p 80:80 -p 443:443 -v ~/work:/work -d okulistik/php74
     ```
 * Docker run again later    
     ```
-    docker stop okul-php74 && \
-    docker rm okul-php74 && \
-    docker run \
-      --name okul-php74 \
-      -p 80:80 \ 
-      -p 443:443 \
-      -v ~/work:/work \
-      -d okulistik/php74
+    docker stop okul-php74
+    docker rm okul-php74
+    docker run --name okul-php74 -p 80:80 -p 443:443 -v ~/work:/work -d okulistik/php74
     ````
 
 ### Things to do in the sub-project directory to study
