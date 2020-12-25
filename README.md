@@ -38,7 +38,7 @@ Docker images to be used for Okulistik php projects.
 
 ### HTTPS support
 
-- [Generate certificate (if not exist)](https://github.com/dakshshah96/local-cert-generator/)
-- [Add certificate (ssl/certificate.crt and certificate.key files) to a keychain](https://support.apple.com/guide/keychain-access/add-certificates-to-a-keychain-kyca2431/10.5/mac)
-- [Change trust settings (all privileges)](https://support.apple.com/guide/keychain-access/change-the-trust-settings-of-a-certificate-kyca11871/mac)
+- [Generate certificates](https://github.com/dakshshah96/local-cert-generator/)
+- [Add root certificate (ssl/rootCA.key and ssl/rootCA.pem files) to a keychain](https://support.apple.com/guide/keychain-access/add-certificates-to-a-keychain-kyca2431/10.5/mac)
+- [Change trust settings for root certificate (always trust)](https://support.apple.com/guide/keychain-access/change-the-trust-settings-of-a-certificate-kyca11871/mac)
 - Restart browser
