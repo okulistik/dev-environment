@@ -5,6 +5,8 @@ LABEL version="0.1" maintainer="Dogan Can <dgncan@gmail.com>"
 RUN apt-get update && apt-get install -y --fix-missing \
     zlib1g-dev \
     libzip-dev \
+    libxml2-dev \
+    libpng-dev \
     curl \
     wget \
     git-core \
@@ -13,8 +15,13 @@ RUN apt-get update && apt-get install -y --fix-missing \
 
 # php extensions
 RUN docker-php-ext-install \
+    zip \
     pdo_mysql \
-    zip
+    xml \
+    soap \
+    gd \
+    sockets \
+    bcmath
 
 COPY ./conf/php.ini /usr/local/etc/php/conf.d
 COPY ./conf/000-default.conf /etc/apache2/sites-available/000-default.conf
