@@ -23,6 +23,9 @@ RUN docker-php-ext-install \
     sockets \
     bcmath
 
+COPY ./ssl/certificate.crt /root/certificate.crt
+COPY ./ssl/certificate.key /root/certificate.key
+
 COPY ./conf/php.ini /usr/local/etc/php/conf.d
 COPY ./conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY ./conf/001-okulistik.conf /etc/apache2/sites-available/001-okulistik.conf
@@ -33,13 +36,6 @@ WORKDIR /root
 RUN wget --output-file=/dev/null https://getcomposer.org/composer.phar && \
     mv composer.phar /bin/composer && \
     chmod 755 /bin/composer
-
-# install mkcert
-RUN wget --output-file=/dev/null https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64 && \
-    mv mkcert-v1.4.1-linux-amd64 /bin/mkcert && \
-    chmod 755 /bin/mkcert && \
-    mkcert -install && \
-    mkcert www.okulistik.loc
 
 # initialize apache2
 WORKDIR /etc/apache2/sites-available/

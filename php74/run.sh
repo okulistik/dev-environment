@@ -9,7 +9,8 @@ docker container rm $C_NAME
 echo "Run again Container: $C_NAME"
 docker container run --name $C_NAME \
     -p 80:80 \
-    -v ~/web/teknolist/:/work  \
+    -p 443:443 \
+    -v ~/work:/work  \
     -d okulistik/php74
 echo "Your Alias List:"
 docker exec -it $C_NAME ls -l /work/conf/
