@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --fix-missing \
     wget \
     git-core \
     net-tools \
-    vim
+    vim \
+    libmcrypt-dev
 
 # php extensions
 RUN docker-php-ext-install \
@@ -24,11 +25,13 @@ RUN docker-php-ext-install \
     bcmath
 
 COPY ./ssl/certificate.crt /root/certificate.crt
-COPY ./ssl/certificate.key /root/certificate.key
+#COPY ./ssl/certificate.key /root/certificate.key
+RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt
 
 COPY ./conf/php.ini /usr/local/etc/php/conf.d
 COPY ./conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY ./conf/001-okulistik.conf /etc/apache2/sites-available/001-okulistik.conf
+COPY ./conf/002-bup.conf /etc/apache2/sites-available/002-bup.conf
 COPY ./conf/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 # install composer
@@ -45,6 +48,7 @@ RUN groupadd apache-www-volume -g 1000 && \
     a2enmod rewrite ssl && \
     a2ensite 000-default.conf  && \
     a2ensite 001-okulistik.conf && \
+    a2ensite 002-bup.conf && \
     a2ensite default-ssl.conf
 
 WORKDIR /work
